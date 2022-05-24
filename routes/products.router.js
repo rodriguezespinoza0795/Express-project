@@ -47,4 +47,22 @@ router.post('/', (req, res) => {
   res.send(products.find((item) => item.id === id,10))
 })
 
+router.patch('/:id', (req, res) => {
+  const body = req.body;
+  const {id} = req.params;
+  res.send({
+    "message": "Update",
+    "data": body,
+    "id": id
+  })
+})
+
+router.delete('/:id', (req, res) => {
+  const {id} = req.params;
+  res.send({
+    "message": "Delete",
+    "id": id
+  })
+})
+
 module.exports = router;
