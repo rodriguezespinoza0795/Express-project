@@ -3,6 +3,8 @@ const routerApi = require('./routes');
 
 const app = express()
 
+app.use(express.json())
+
 const PORT = 3000
 
 app.get('/', (req, res) => {

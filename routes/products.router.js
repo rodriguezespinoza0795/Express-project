@@ -40,4 +40,11 @@ router.get('/:id', async (req, res) => {
   res.send(products.find((item) => item.id === parseInt(id,10)))
 });
 
+router.post('/', (req, res) => {
+  const body = req.body;
+  const id = products.length+1
+  products.push({ ...body,  "id":id })
+  res.send(products.find((item) => item.id === id,10))
+})
+
 module.exports = router;
