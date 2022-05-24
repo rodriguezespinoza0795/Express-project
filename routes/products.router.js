@@ -12,11 +12,27 @@ const products = [
     id:2,
     name:'producto2',
     prices:2000
+  },
+  {
+    id:3,
+    name:'producto3',
+    price:1000
+  },
+  {
+    id:4,
+    name:'producto4',
+    prices:2000
   }
 ]
 
 router.get('/', async (req, res) => {
-  res.send(products)
+  const { offset, limit } = req.query
+  offset && limit
+    ? res.send(products.slice(offset, offset == 0 ? limit : offset*limit+1 ))
+    : res.send({
+      "status": "error",
+      "message": "limit and offset are mandatory"
+    })
 });
 
 router.get('/:id', async (req, res) => {
